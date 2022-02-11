@@ -6,9 +6,30 @@ wxEND_EVENT_TABLE()
 
 
 usbMain::usbMain() : wxFrame(nullptr, wxID_ANY, "USB Headphone Amp Config", wxPoint(30, 30), wxSize(WINDOW_WIDTH, WINDOW_HEIGHT)) {
-	m_button1 = new wxButton(this, 10001, "Click Me", wxPoint(10, 10), wxSize(150, 50));
-	m_text1 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(10, 70), wxSize(300, 30));
-	m_list1 = new wxListBox(this, wxID_ANY, wxPoint(10, 110), wxSize(300, 300));
+
+	// Starter console interface to speak with microcontroller
+	m_button_send = new wxButton(
+		this, 
+		BUTTON_SEND_ID, 
+		"Send", 
+		wxPoint(TEXT_CMD_WIDTH + GENERAL_PADDING * 2, LIST_LOG_HEIGHT + GENERAL_PADDING * 2), 
+		wxSize(BUTTON_SEND_WIDTH, BUTTON_SEND_HEIGHT)
+	);
+
+	m_text_cmd = new wxTextCtrl(
+		this,
+		TEXT_CMD_ID,
+		"", 
+		wxPoint(GENERAL_PADDING, LIST_LOG_HEIGHT + GENERAL_PADDING * 2),
+		wxSize(TEXT_CMD_WIDTH, TEXT_CMD_HEIGHT)
+	);
+
+	m_list_log = new wxListBox(
+		this,
+		LIST_LOG_ID,
+		wxPoint(GENERAL_PADDING, GENERAL_PADDING),
+		wxSize(LIST_LOG_WIDTH, LIST_LOG_HEIGHT)
+	);
 }
 
 usbMain::~usbMain() {
@@ -16,7 +37,12 @@ usbMain::~usbMain() {
 }
 
 void usbMain::OnButtonClicked(wxCommandEvent& evt) {
-	m_list1->AppendString(m_text1->GetValue());
+
+	wxString cmd = m_text_cmd->GetValue();
+
+	if (!cmd.IsEmpty()) {
+		m_list_log->AppendString("request:  " + m_text_cmd->GetValue());
+	}
 
 	evt.Skip();
 }

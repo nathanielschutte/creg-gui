@@ -2,19 +2,35 @@
 
 #include "wx/wx.h"
 
+#define GENERAL_PADDING 10
+
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
+#define FRAME_DIV_X WINDOW_WIDTH * 4 / 6
+
+#define BUTTON_SEND_ID 10001
+#define BUTTON_SEND_WIDTH 100
+#define BUTTON_SEND_HEIGHT 20
+
+#define LIST_LOG_ID 30001
+#define LIST_LOG_WIDTH FRAME_DIV_X - GENERAL_PADDING * 2
+#define LIST_LOG_HEIGHT 300
+
+#define TEXT_CMD_ID 20001
+#define TEXT_CMD_WIDTH FRAME_DIV_X - BUTTON_SEND_WIDTH - GENERAL_PADDING * 3
+#define TEXT_CMD_HEIGHT 20
+
+
 class usbMain : public wxFrame {
 public:
 	usbMain();
 	~usbMain();
 
-public:
-	const unsigned int WINDOW_WIDTH = 800;
-	const unsigned int WINDOW_HEIGHT = 600;
 
 public:
-	wxButton* m_button1 = nullptr;
-	wxTextCtrl* m_text1 = nullptr;
-	wxListBox* m_list1 = nullptr;
+	wxButton* m_button_send = nullptr;
+	wxTextCtrl* m_text_cmd = nullptr;
+	wxListBox* m_list_log = nullptr;
 
 	void OnButtonClicked(wxCommandEvent& evt);
 
