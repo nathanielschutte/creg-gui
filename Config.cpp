@@ -34,21 +34,23 @@ bool Config::read_config(std::string& pathname) {
 			}
 		}
 	}
+
+	return true;
 }
 
 // Get val as string
 CONFIG_VAL_T Config::get(CONFIG_KEY_T& key) {
-
+	return "";
 }
 
 // Get val as integer
 int Config::get_int(CONFIG_KEY_T& key) {
-
+	return 0;
 }
 
 // Get value as bool
 bool Config::get_bool(CONFIG_KEY_T& key) {
-
+	return true;
 }
 
 // Store a key value pair
