@@ -1,12 +1,15 @@
 
-#include "Config.h"
+// Handle config read and write to disk
 
-Config::Config(std::string& pathname) {
-	read_config(pathname);
-}
+
+#include "Config.h"
 
 Config::Config() {
 
+}
+
+Config::Config(std::string& pathname) : m_pathname(pathname) {
+	read_config(pathname);
 }
 
 Config::~Config() {
@@ -15,6 +18,8 @@ Config::~Config() {
 
 // Load config
 bool Config::read_config(std::string& pathname) {
+
+	m_pathname = pathname;
 	std::fstream file(pathname);
 
 	if (!file) {
@@ -35,6 +40,11 @@ bool Config::read_config(std::string& pathname) {
 		}
 	}
 
+	return true;
+}
+
+// Write config to file
+bool Config::write_config() {
 	return true;
 }
 

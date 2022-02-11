@@ -30,19 +30,21 @@ usbMain::usbMain() : wxFrame(nullptr, wxID_ANY, "USB Headphone Amp Config", wxPo
 		wxPoint(GENERAL_PADDING, GENERAL_PADDING),
 		wxSize(LIST_LOG_WIDTH, LIST_LOG_HEIGHT)
 	);
+
+	// Create controller
+	m_control = new Controller(m_list_log);
 }
 
 usbMain::~usbMain() {
 
+	delete m_control;
 }
 
 void usbMain::OnButtonClicked(wxCommandEvent& evt) {
 
 	wxString cmd = m_text_cmd->GetValue();
-
-	if (!cmd.IsEmpty()) {
-		m_list_log->AppendString("request:  " + m_text_cmd->GetValue());
-	}
+	std::string msg = std::string(cmd.mb_str());
+	m_control->process_msg_str(msg);
 
 	evt.Skip();
 }

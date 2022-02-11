@@ -3,42 +3,62 @@
 // String tables and reference enums
 
 #include <string>
+#include <vector>
 
-typedef const std::string str_table_t;
+
+typedef std::vector<std::string> str_table_t;
 
 
-// Message strings
+// Message strings ==============================
 enum ACTION {
 	PUTONE,
 	PUTMANY,
 	GETONE,
 	GETMANY
 };
-const str_table_t ACTION_TABLE[] = {
+const str_table_t ACTION_TABLE = {
 	"putone",
-	"putmany",
+	"put",
 	"getone",
-	"getmany"
+	"get"
 };
+// ==============================================
 
 
-// Generated wave types
+
+// Param names
+enum PARAM {
+	INTERVAL,
+	WAVE
+};
+const str_table_t PARAM_TABLE = {
+	"interval",
+	"wave"
+};
+// ==============================================
+
+
+
+// Generated wave types =========================
 enum WAVE {
 	SQUARE,
 	SINE
 };
-const str_table_t WAVE_TABLE[] = {
+const str_table_t WAVE_TABLE = {
 	"square",
 	"sine"
 };
+// ==============================================
 
 
-// Status codes
+
+// Status codes =================================
 enum STATUS {
 	OK,
-	ERROR
+	ERR
 };
-const str_table_t STATUS_TABLE[] = {
+const str_table_t STATUS_TABLE = {
 	"ok",
 	"err"
-}
+};
+// ==============================================

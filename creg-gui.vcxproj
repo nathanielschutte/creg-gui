@@ -22,6 +22,7 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="Message.h" />
     <ClInclude Include="Tables.h" />
     <ClInclude Include="usbApp.h" />
     <ClInclude Include="usbMain.h" />
@@ -30,6 +31,7 @@
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Message.cpp" />
     <ClCompile Include="usbApp.cpp" />
     <ClCompile Include="usbMain.cpp" />
   </ItemGroup>

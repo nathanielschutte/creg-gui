@@ -1,6 +1,7 @@
 #pragma once
 
 #include "wx/wx.h"
+#include "Controller.h"
 
 #define GENERAL_PADDING 10
 
@@ -26,12 +27,15 @@ public:
 	usbMain();
 	~usbMain();
 
+private:
+	Controller* m_control;
 
 public:
 	wxButton* m_button_send = nullptr;
 	wxTextCtrl* m_text_cmd = nullptr;
 	wxListBox* m_list_log = nullptr;
 
+public:
 	void OnButtonClicked(wxCommandEvent& evt);
 
 	wxDECLARE_EVENT_TABLE();
