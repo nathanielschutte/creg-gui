@@ -11,15 +11,13 @@ typedef std::vector<std::string> str_table_t;
 
 // Message strings ==============================
 enum ACTION {
-	PUTONE,
-	PUTMANY,
-	GETONE,
-	GETMANY
+	PASS,
+	PUT,
+	GET
 };
 const str_table_t ACTION_TABLE = {
-	"putone",
+	""
 	"put",
-	"getone",
 	"get"
 };
 // ==============================================
@@ -54,10 +52,12 @@ const str_table_t WAVE_TABLE = {
 
 // Status codes =================================
 enum STATUS {
+	NONE,
 	OK,
 	ERR
 };
 const str_table_t STATUS_TABLE = {
+	""
 	"ok",
 	"err"
 };

@@ -20,6 +20,10 @@ public:
 
 public:
 
+	void process_msg(Message* msg);
+
+	void process_msg_bytes(byte_t action, keyval_bytes_t* keyvals, byte_t keyval_len);
+
 	void process_msg_str(std::string& msg);
 
 	void queue_msg(Message* msg);

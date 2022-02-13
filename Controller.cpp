@@ -28,18 +28,29 @@ Controller::~Controller() {
 	delete m_config_lock;
 }
 
-// Process string form of a message
-void Controller::process_msg_str(std::string& str) {
-
-	// Create Message
-	Message* msg = new Message(str);
-
+void Controller::process_msg(Message* msg) {
 	if (!msg->ok()) {
 		push_log("error", "could not parse message");
 	}
 
 	// Queue Message
 	queue_msg(msg);
+}
+
+// Process separated bytes of a message
+void Controller::process_msg_bytes(byte_t action, keyval_bytes_t* keyvals, byte_t keyval_len) {
+
+	// Create message from bytes
+	Message* msg = new Message(action, keyvals, keyval_len);
+	process_msg(msg);
+}
+
+// Process string form of a message
+void Controller::process_msg_str(std::string& str) {
+
+	// Create Message from string
+	Message* msg = new Message(str);
+	process_msg(msg);
 }
 
 // Queue message for sending
